@@ -5,6 +5,22 @@ var utils = require("soa-example-core-utils");
 
 var config = require("soa-example-service-config").config();
 
+var debug = function(accessToken, message){
+	return createEntry(accessToken, 1, message);
+};
+
+var info = function(accessToken, message){
+	return createEntry(accessToken, 2, message);
+};
+
+var warn = function(accessToken, message){
+	return createEntry(accessToken, 3, message);
+};
+
+var error = function(accessToken, message){
+	return createEntry(accessToken, 4, message);
+};
+
 var createEntry = function(accessToken, level, message){
 	var deferred = Q.defer();
 	
@@ -36,5 +52,8 @@ var getLogEntriesForUser = function(accessToken){
 
 module.exports = {
 	getLogEntriesForUser : getLogEntriesForUser,
-	createEntry: createEntry
+	debug: debug,
+	info: info,
+	warn: warn,
+	error: error
 }
