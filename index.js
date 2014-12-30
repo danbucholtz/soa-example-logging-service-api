@@ -31,7 +31,7 @@ var createEntry = function(accessToken, level, message){
 		message: message
 	};
 
-	utils.postJson(accessToken, url + "/log").then(function(response){
+	utils.postJsonWithAccessToken(accessToken, object, url + "/log").then(function(response){
 		deferred.resolve(response);
 	});
 
